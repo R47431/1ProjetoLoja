@@ -1,0 +1,64 @@
+<body>
+  <form>
+   
+    <div> <input type="file" name="imagemUpload"   (change)="selecionarArquivo($event)"/>
+    <div *ngIf="!produto.imagem && campoInvalido.imagem" class="mensagem-aviso">
+      Por favor, preencha o campo descricao com 9 digitos.
+    </div>
+
+      <input type="text" name="nome" placeholder="nome" class="form-control" [(ngModel)]="produto.nome"
+        [ngClass]="{ 'campo-invalido': !produto.nome && campoInvalido.nome }" (blur)="validarCampo('nome')" />
+      <div *ngIf="!produto.nome && campoInvalido.nome" class="mensagem-aviso">
+        Por favor, preencha o campo nome.
+      </div>
+
+      <input type="number" name="preco" placeholder="preco" class="form-control" [(ngModel)]="produto.preco" [ngClass]="{
+            'campo-invalido': !produto.preco && campoInvalido.preco
+          }" (blur)="validarCampo('preco')" />
+      <div *ngIf="!produto.preco && campoInvalido.preco" class="mensagem-aviso">
+        Por favor, preencha o campo preco.
+      </div>
+
+      <input type="number" name="descricao" placeholder="descricao" class="form-control" [(ngModel)]="produto.descricao"
+        [ngClass]="{
+            'campo-invalido': !produto.descricao && campoInvalido.descricao
+          }" (blur)="validarCampo('descricao')" />
+      <div *ngIf="!produto.descricao && campoInvalido.descricao" class="mensagem-aviso">
+        Por favor, preencha o campo descricao com 9 digitos.
+      </div>
+
+    
+    </div>
+
+    <button class="form-control" (click)="cadastrarProduto()">Cadastrar</button>
+    <div>
+      <button class="form-control" (click)="alterarProduto()">Alterar</button>
+      <button class="form-control" (click)="deletarProduto()">Deletar</button>
+    </div>
+    <button class="form-control" (click)="limpar()">limpar</button>
+  </form>
+  <table class="table">
+    <thead>
+      <tr>
+        <td>#</td>
+        <td>nome</td>
+        <td>preco</td>
+        <td>descricao</td>
+        <td>selecionar</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let produto of produtos; index as i">
+        <td>{{ i + 1 }}</td>
+        <td>{{ produto.nome }}</td>
+        <td>{{ produto.preco }}</td>
+        <td>{{ produto.descricao }}</td>
+        <td>
+          <button class="form-control" (click)="selecionarProduto(i)">
+            selecionar
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</body>

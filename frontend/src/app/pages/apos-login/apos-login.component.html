@@ -1,0 +1,18 @@
+<body>
+  <table class="table">
+    <thead>
+      <tr>
+        <td>#</td>
+        <td>nome</td>
+        <td>senha</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cliente of clientes; index as i">
+        <td>{{i+1}}</td>
+        <td>{{cliente.nome}}</td>
+        <td>{{cliente.senha}}</td>
+      </tr>
+    </tbody>
+  </table>
+</body>
