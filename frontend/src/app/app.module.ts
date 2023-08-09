@@ -8,7 +8,6 @@ import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './pages/login/login.component';
 import { LobbyComponent } from './pages/lobby/lobby.component';
 import { CadastraClienteComponent } from './pages/cadastra-cliente/cadastra-cliente.component';
-import { AposLoginComponent } from './pages/apos-login/apos-login.component';
 import { CadastraProdutoComponent } from './pages/cadastra-produto/cadastra-produto.component';
 
 @NgModule({
@@ -16,7 +15,6 @@ import { CadastraProdutoComponent } from './pages/cadastra-produto/cadastra-prod
     AppComponent,
     LoginComponent,
     LobbyComponent,
-    AposLoginComponent,
     CadastraClienteComponent,
     CadastraProdutoComponent,
   ],

@@ -2,14 +2,12 @@ import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LobbyComponent } from './pages/lobby/lobby.component';
 import { LoginComponent } from './pages/login/login.component';
-import { AposLoginComponent } from './pages/apos-login/apos-login.component';
 import { CadastraClienteComponent } from './pages/cadastra-cliente/cadastra-cliente.component';
 import { CadastraProdutoComponent } from './pages/cadastra-produto/cadastra-produto.component';
 
 const routes: Routes = [
   { path: 'lobby', component: LobbyComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'aposLogin', component: AposLoginComponent },
+  { path: '', component: LoginComponent },
   { path: 'cadastraCliente', component: CadastraClienteComponent },
   { path: 'cadastraProduto', component: CadastraProdutoComponent},
 

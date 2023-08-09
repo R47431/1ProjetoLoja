@@ -29,7 +29,7 @@ export class LoginComponent {
         let senha = this.cliente.senha;
 
         if (nome && senha) {
-          window.location.href = '/aposLogin';
+          window.location.href = '/lobby';
         } else {
           alert('Por favor, preencha o nome e a senha corretamente.');
         }
@@ -48,7 +48,7 @@ export class LoginComponent {
 
   storag(): void {
     if (this.storage.get('cadastrado') === 'true') {
-      window.location.href = '/aposLogin';
+      window.location.href = '/lobby';
     }
   }
 }

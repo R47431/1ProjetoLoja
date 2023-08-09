@@ -15,6 +15,8 @@ public class ClienteService {
     @Autowired
     private ClienteRepositorio cadastraRepositorio;
 
+
+
     public boolean telefonePattern(ClienteModelo cliente) {
         String telefone = cliente.getTelefone().toString();
         Pattern pattern = Pattern.compile("\\d{9}");
@@ -25,11 +27,11 @@ public class ClienteService {
 
     public void validarNomeIdadeTelefone(ClienteModelo cliente) {
         if (cliente.getNome() == null || cliente.getNome().isEmpty()) {
-            throw new  IllegalArgumentException("Coloquer um nome");
+            throw new IllegalArgumentException("Coloquer um nome");
         } else if (cliente.getIdade() == null || cliente.getIdade() < 0) {
-            throw new  IllegalArgumentException("Coloquer uma idade");
-        } else if (telefonePattern(cliente)) {
-            throw new  IllegalArgumentException("O telefone tem quer ter 9 digitos");
+            throw new IllegalArgumentException("Coloquer uma idade");
+        } else if (!telefonePattern(cliente)) {
+            throw new IllegalArgumentException("O telefone tem quer ter 9 digitos");
         }
     }
 

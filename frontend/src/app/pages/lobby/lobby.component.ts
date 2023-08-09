@@ -13,7 +13,7 @@ export class LobbyComponent {
   pesquisa: string = '';
   produtoEncontrado: Produto | undefined;
 
-  constructor(private produtoService: ProdutosService) {}
+  constructor(private produtoService: ProdutosService) { }
 
   ngOnInit(): void {
     this.lista();
@@ -23,9 +23,8 @@ export class LobbyComponent {
     this.produtoService.listaProduto().subscribe((data) => (this.produtos = data));
   }
 
-
   buscaProduto(): void {
-    this.produtoService.buscaProduto(this.produto.nome).subscribe((data) => {
+    this.produtoService.buscaProduto(this.pesquisa).subscribe((data) => {
       this.produtoEncontrado = this.produtos.find(
         (data) =>
           data.nome &&
@@ -33,6 +32,7 @@ export class LobbyComponent {
       );
     });
   }
+  
 
   limpaFormulario(): void {
     this.produto = new Produto();

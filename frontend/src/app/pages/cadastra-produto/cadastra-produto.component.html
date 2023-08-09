@@ -1,8 +1,9 @@
 <body>
   <form>
-   
+    
+
     <div> <input type="file" name="imagemUpload"   (change)="selecionarArquivo($event)"/>
-    <div *ngIf="!produto.imagem && campoInvalido.imagem" class="mensagem-aviso">
+    <div *ngIf="!produto.nomeImagem && campoInvalido.imagem" class="mensagem-aviso">
       Por favor, preencha o campo descricao com 9 digitos.
     </div>
 
@@ -24,7 +25,7 @@
             'campo-invalido': !produto.descricao && campoInvalido.descricao
           }" (blur)="validarCampo('descricao')" />
       <div *ngIf="!produto.descricao && campoInvalido.descricao" class="mensagem-aviso">
-        Por favor, preencha o campo descricao com 9 digitos.
+        Por favor, preencha o campo 
       </div>
 
     
@@ -41,6 +42,7 @@
     <thead>
       <tr>
         <td>#</td>
+        <td>nomeImagem</td>
         <td>nome</td>
         <td>preco</td>
         <td>descricao</td>
@@ -50,6 +52,9 @@
     <tbody>
       <tr *ngFor="let produto of produtos; index as i">
         <td>{{ i + 1 }}</td>
+        <td>
+          <img [src]="'assets/image/' + produto.nomeImagem" width="50" height="50" alt="Imagem do Produto" />
+        </td>
         <td>{{ produto.nome }}</td>
         <td>{{ produto.preco }}</td>
         <td>{{ produto.descricao }}</td>

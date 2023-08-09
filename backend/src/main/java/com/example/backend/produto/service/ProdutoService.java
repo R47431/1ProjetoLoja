@@ -19,7 +19,7 @@ public class ProdutoService {
     @Autowired
     private ProdutoRepositorio produtoRepositorio;
 
-    String diretorio = "src/assets/image";
+    String diretorio = "/home/rafael/Downloads/1ProjetoLoja-main/frontend/src/assets/image/";
 
     public HashMap<String, String> diretorios(Produto produto) {
         HashMap<String, String> diretorios = new HashMap<>();

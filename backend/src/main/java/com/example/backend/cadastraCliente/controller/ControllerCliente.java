@@ -20,11 +20,15 @@ import java.util.Optional;
 @CrossOrigin("*")
 public class ControllerCliente {
 
-    @Autowired
     private ClienteRepositorio cadastraRepositorio;
 
-    @Autowired
     private ClienteService cadastroService;
+
+    @Autowired
+    public ControllerCliente(ClienteRepositorio cadastraRepositorio, ClienteService cadastroService) {
+        this.cadastraRepositorio = cadastraRepositorio;
+        this.cadastroService = cadastroService;
+    }
 
     @GetMapping
     public Iterable<ClienteModelo> lista() {
@@ -38,7 +42,7 @@ public class ControllerCliente {
             cadastroService.nomeExistente(cliente);
             cliente.setLogado(true);
 
-           ClienteModelo retonarCliente =  cadastraRepositorio.save(cliente);
+            ClienteModelo retonarCliente = cadastraRepositorio.save(cliente);
             return ResponseEntity.ok(retonarCliente);
 
         } catch (IllegalArgumentException e) {
@@ -59,7 +63,7 @@ public class ControllerCliente {
             Optional<ClienteModelo> cliente = cadastraRepositorio.findById(id);
             if (cliente.isPresent()) {
                 clienteAltera.setId(id);
-                ClienteModelo retonarCliente =  cadastraRepositorio.save(clienteAltera);
+                ClienteModelo retonarCliente = cadastraRepositorio.save(clienteAltera);
                 return ResponseEntity.ok(retonarCliente);
             }
         } catch (IllegalArgumentException e) {
@@ -85,7 +89,7 @@ public class ControllerCliente {
     }
 
     @DeleteMapping("/all")
-    public void deletaTudo(){
+    public void deletaTudo() {
         cadastraRepositorio.deleteAll();
     }
 

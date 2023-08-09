@@ -1,15 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
-</head>
-
 <body>
   <form>
+    <h1>Cadastro</h1>
     <div>
       <input type="text" name="nome" placeholder="nome" class="form-control" [(ngModel)]="cliente.nome"
         [ngClass]="{ 'campo-invalido': !cliente.nome && campoInvalido.nome }" (blur)="validarCampo('nome')" />
@@ -18,7 +9,7 @@
       </div>
 
       <input type="number" name="idade" placeholder="idade" class="form-control" [(ngModel)]="cliente.idade"
-       [ngClass]="{'campo-invalido': !cliente.idade && campoInvalido.idade}" (blur)="validarCampo('idade')" />
+        [ngClass]="{'campo-invalido': !cliente.idade && campoInvalido.idade}" (blur)="validarCampo('idade')" />
       <div *ngIf="!cliente.idade && campoInvalido.idade" class="mensagem-aviso">
         Por favor, preencha o campo idade.
       </div>
@@ -30,44 +21,14 @@
       </div>
 
       <input type="number" name="senha" placeholder="senha" class="form-control" [(ngModel)]="cliente.senha" required
-       pattern="[0-9]*"
-       [ngClass]="{'campo-invalido': !cliente.senha && campoInvalido.senha}" (blur)="validarCampo('senha')" />
+        pattern="[0-9]*" [ngClass]="{'campo-invalido': !cliente.senha && campoInvalido.senha}"
+        (blur)="validarCampo('senha')" />
       <div *ngIf="!cliente.senha && campoInvalido.senha" class="mensagem-aviso">
         Por favor, preencha o campo senha .
       </div>
     </div>
 
     <button class="form-control" (click)="cadastrarCliente()">Cadastrar</button>
-    <div>
-      <button class="form-control" (click)="alterarCliente()">Alterar</button>
-      <button class="form-control" (click)="deletaCliente()">Deletar</button>
-    </div>
     <button class="form-control" (click)="limpar()">limpar</button>
   </form>
-  <table class="table">
-    <thead>
-      <tr>
-        <td>#</td>
-        <td>nome</td>
-        <td>idade</td>
-        <td>telefone</td>
-        <td>selecionar</td>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let cliente of clientes; index as i">
-        <td>{{ i + 1 }}</td>
-        <td>{{ cliente.nome }}</td>
-        <td>{{ cliente.idade }}</td>
-        <td>{{ cliente.telefone }}</td>
-        <td>
-          <button class="form-control" (click)="selecionarCliente(i)">
-            selecionar
-          </button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
 </body>
-
-</html>

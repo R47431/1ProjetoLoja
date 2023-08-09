@@ -23,7 +23,7 @@ import java.util.Optional;
 @Controller
 @RestController
 @RequestMapping("/cadastraProduto")
-@CrossOrigin("*")
+@CrossOrigin(origins = "*")
 public class ProdutoController {
 
     @Autowired
@@ -38,7 +38,7 @@ public class ProdutoController {
     }
 
     @PostMapping
-    public ResponseEntity<?> cadastra(@RequestBody Produto produto, @RequestParam("imagem") MultipartFile imagem) {
+    public ResponseEntity<?> cadastra( Produto produto, @RequestParam("imagem") MultipartFile imagem) {
         try {
             produtoService.validaCampo(produto, imagem);
 
