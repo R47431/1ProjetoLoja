@@ -61,26 +61,6 @@ export class CadastraClienteComponent {
     });
   }
 
-  alterarCliente(): void {
-    this.clienteService.alterarCliente(this.cliente)
-      .subscribe(retorno => {
-        let posicao = this.clientes.findIndex(obj => obj.id === this.cliente.id)
-        this.clientes[posicao] = retorno;
-        this.limpar();
-        alert("Alterado")
-      })
-  }
-
-  deletaCliente(): void {
-    this.clienteService.deletaCliente(this.cliente.id)
-      .subscribe(retorno => {
-        let posicao = this.clientes.findIndex(obj => obj.id == this.cliente.id);
-        this.clientes.splice(posicao, 1);
-        this.limpar();
-        alert('removido com sucesso');
-      })
-  }
-
   validarCampo(campo: string): void {
     if (campo === 'nome') {
       this.campoInvalido.nome = this.cliente.nome === '';
@@ -99,7 +79,4 @@ export class CadastraClienteComponent {
     this.cliente = new Cliente();
   }
 
-  selecionarCliente(posicao: number): void {
-    this.cliente = this.clientes[posicao];
-  }
 }

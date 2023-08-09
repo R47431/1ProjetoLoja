@@ -8,27 +8,34 @@ import { Produto } from '../model/Produto';
 })
 export class ProdutosService {
 
-  private url: string = 'http://localhost:8080';
+  private url: string = 'http://localhost:8080/cadastraProduto';
 
   constructor(private http: HttpClient) { }
 
   listaProduto(): Observable<Produto[]> {
-    return this.http.get<Produto[]>(`${this.url}/cadastraProduto`);
+    return this.http.get<Produto[]>(`${this.url}`);
   }
 
-  cadastrarProduto(produto: Produto): Observable<Produto> {
-    return this.http.post<Produto>(`${this.url}/cadastraProduto`, produto)
+ 
+  cadastrarProdutoComImagem(produto: Produto, imagem: File) {
+    const formData = new FormData();
+    formData.append('imagem', imagem);
+    formData.append('nome', produto.nome);
+    formData.append('preco', produto.preco.toString());
+    formData.append('descricao', produto.descricao);
+  
+    return this.http.post<any>(`${this.url}`, formData);
   }
 
   alteraProduto(produto: Produto): Observable<Produto> {
-    return this.http.put<Produto>(`${this.url}/cadastraProduto`, produto)
+    return this.http.put<Produto>(`${this.url}`, produto)
   }
 
   deletaProduto(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.url}/cadastraProduto/${id}`)
+    return this.http.delete<void>(`${this.url}/${id}`)
   }
 
   buscaProduto(nome: string): Observable<Produto> {
-    return this.http.get<Produto>(`${this.url}/cadastraProduto/${nome}`)
+    return this.http.get<Produto>(`${this.url}/${nome}`)
   }
 }

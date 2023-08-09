@@ -27,16 +27,21 @@ export class CadastraProdutoComponent {
 
   listaProduto(): void {
     this.produtosServise.listaProduto()
-    .subscribe(data => this.produtos);
+    .subscribe(data => this.produtos = data);
   }
 
   cadastrarProduto(): void {
-    this.produtosServise.cadastrarProduto(this.produto)
-    .subscribe(data =>{
-      this.produtos.push(data);
-      alert('Produto cadastrado com sucesso!');
-    });
+    if (this.arquivoImagem) {
+      this.produtosServise.cadastrarProdutoComImagem(this.produto, this.arquivoImagem)
+        .subscribe((data) => {
+          this.produtos.push(data);
+          alert('Produto cadastrado com sucesso!');
+        });
+    } else {
+      alert('Selecione uma imagem para o produto.');
+    }
   }
+  
 
   alterarProduto(): void {
     this.produtosServise.alteraProduto(this.produto)
@@ -61,6 +66,7 @@ export class CadastraProdutoComponent {
   selecionarArquivo(event: any): void {
     const arquivoSelecionado = event.target.files[0];
     this.arquivoImagem = arquivoSelecionado;
+    this.produto.nomeImagem = arquivoSelecionado.name; // Associa o nome da imagem ao produto
   }
   
 
@@ -72,7 +78,7 @@ export class CadastraProdutoComponent {
       const preco = Number(this.produto.preco);
       this.campoInvalido.preco = this.produto.preco === null || isNaN(preco) || preco <= 0;
     } else if (campo === 'descricao') {
-      this.campoInvalido.descricao = this.produto.descricao === null;
+      this.campoInvalido.descricao = this.produto.descricao === '';
     }
   }
 

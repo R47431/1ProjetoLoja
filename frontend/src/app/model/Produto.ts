@@ -3,5 +3,5 @@ export class Produto{
   nome:string = ""
   preco:string = "";
   descricao:string = "";
-  imagem: string = "";
+  nomeImagem: string = "";
 }
