@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Produto } from 'src/app/model/Produto';
 import { ProdutosService } from 'src/app/services/produtos.service';
 
@@ -11,6 +11,7 @@ export class CadastraProdutoComponent {
   produto = new Produto();
   produtos: Produto[] = [];
   arquivoImagem: File | null = null;
+  @ViewChild('fileInput', { static: false }) fileInput!: ElementRef;
 
   campoInvalido = {
     nome: false,
@@ -32,7 +33,7 @@ export class CadastraProdutoComponent {
 
   cadastrarProduto(): void {
     if (this.arquivoImagem) {
-      this.produtosServise.cadastrarProdutoComImagem(this.produto, this.arquivoImagem)
+      this.produtosServise.cadastrarProduto(this.produto, this.arquivoImagem)
         .subscribe((data) => {
           this.produtos.push(data);
           alert('Produto cadastrado com sucesso!');
@@ -41,22 +42,26 @@ export class CadastraProdutoComponent {
       alert('Selecione uma imagem para o produto.');
     }
   }
-  
-
+ 
   alterarProduto(): void {
-    this.produtosServise.alteraProduto(this.produto)
-    .subscribe(retorno => {
-      let posicao = this.produtos.findIndex(obj => obj.id === this.produto.id)
+    if (this.arquivoImagem) {
+    this.produtosServise.alteraProduto(this.produto, this.arquivoImagem)
+    .subscribe((retorno) => {
+      let posicao = this.produtos.findIndex(obj => obj.produtoId === this.produto.produtoId)
       this.produtos[posicao] = retorno;
+      console.log(JSON.stringify(this.produto.produtoId));
       this.limpar();
       alert("Alterado")
-    })
+    });
+  } else {
+    alert('Selecione uma imagem para o produto.');
+  }
   }
 
   deletarProduto(): void {
-    this.produtosServise.deletaProduto(this.produto.id)
+    this.produtosServise.deletaProduto(this.produto.produtoId)
     .subscribe(retorno => {
-      let posicao = this.produtos.findIndex(obj => obj.id == this.produto.id);
+      let posicao = this.produtos.findIndex(obj => obj.produtoId == this.produto.produtoId);
       this.produtos.splice(posicao, 1);
       this.limpar();
       alert('removido com sucesso');
@@ -88,5 +93,8 @@ export class CadastraProdutoComponent {
 
   limpar(): void {
     this.produto = new Produto();
+    if (this.fileInput) {
+      this.fileInput.nativeElement.value = '';
+    }
   }
 }

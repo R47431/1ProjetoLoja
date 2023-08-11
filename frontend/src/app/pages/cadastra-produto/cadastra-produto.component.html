@@ -2,9 +2,9 @@
   <form>
     
 
-    <div> <input type="file" name="imagemUpload"   (change)="selecionarArquivo($event)"/>
+    <div> <input #fileInput type="file" name="nomeImagem"   (change)="selecionarArquivo($event)"/>
     <div *ngIf="!produto.nomeImagem && campoInvalido.imagem" class="mensagem-aviso">
-      Por favor, preencha o campo descricao com 9 digitos.
+      Por favor, preencha o campo;
     </div>
 
       <input type="text" name="nome" placeholder="nome" class="form-control" [(ngModel)]="produto.nome"

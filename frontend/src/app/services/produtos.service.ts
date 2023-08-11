@@ -17,18 +17,24 @@ export class ProdutosService {
   }
 
  
-  cadastrarProdutoComImagem(produto: Produto, imagem: File) {
+  cadastrarProduto(produto: Produto, imagem: File):Observable<Produto>{
     const formData = new FormData();
     formData.append('imagem', imagem);
     formData.append('nome', produto.nome);
     formData.append('preco', produto.preco.toString());
     formData.append('descricao', produto.descricao);
   
-    return this.http.post<any>(`${this.url}`, formData);
+    return this.http.post<Produto>(`${this.url}`, formData);
   }
 
-  alteraProduto(produto: Produto): Observable<Produto> {
-    return this.http.put<Produto>(`${this.url}`, produto)
+  alteraProduto(produto: Produto, imagem: File): Observable<Produto> {
+    const formData = new FormData();
+    formData.append('imagem', imagem);
+    formData.append('nome', produto.nome);
+    formData.append('produtoId', produto.produtoId.toString());
+    formData.append('preco', produto.preco.toString());
+    formData.append('descricao', produto.descricao);
+    return this.http.put<Produto>(`${this.url}` ,formData);  
   }
 
   deletaProduto(id: number): Observable<void> {
