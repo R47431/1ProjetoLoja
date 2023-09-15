@@ -1,0 +1,10 @@
+<header class="header">
+    <a class="header-left" routerLink="lobby">Lobby</a>
+    <a class="header-left" routerLink="">Login</a>
+    <ng-container *ngIf="cargo()">
+        <a class="header-left" routerLink="cadastraCliente">Cadastrar Cliente</a>
+        <a class="header-left" routerLink="cadastraProduto">Cadastrar Produto</a>
+    </ng-container>
+    <a class="header-right" routerLink="perfil">Perfil</a>
+</header>
+<router-outlet></router-outlet>   

@@ -1,0 +1,54 @@
+<body>
+  <form>
+
+
+    <div> <input #fileInput type="file" name="nomeImagem" (change)="selecionarArquivo($event)" />
+      <div *ngIf="!produto.nomeImagem && campoInvalido.imagem" class="mensagem-aviso">
+        Por favor, preencha o campo;
+      </div>
+
+      <input type="text" name="nome" placeholder="nome" class="form-control" [(ngModel)]="produto.nome"
+        [ngClass]="{ 'campo-invalido': !produto.nome && campoInvalido.nome }" (blur)="validarCampo('nome')" />
+      <div *ngIf="!produto.nome && campoInvalido.nome" class="mensagem-aviso">
+        Por favor, preencha o campo nome.
+      </div>
+
+      <input type="number" name="preco" placeholder="preco" class="form-control" [(ngModel)]="produto.preco" [ngClass]="{
+            'campo-invalido': !produto.preco && campoInvalido.preco
+          }" (blur)="validarCampo('preco')" />
+      <div *ngIf="!produto.preco && campoInvalido.preco" class="mensagem-aviso">
+        Por favor, preencha o campo preco.
+      </div>
+
+      <input type="text" name="descricao" placeholder="descricao" class="form-control" [(ngModel)]="produto.descricao"
+        [ngClass]="{
+            'campo-invalido': !produto.descricao && campoInvalido.descricao
+          }" (blur)="validarCampo('descricao')" />
+      <div *ngIf="!produto.descricao && campoInvalido.descricao" class="mensagem-aviso">
+        Por favor, preencha o campo
+      </div>
+
+
+    </div>
+
+    <button class="form-control" (click)="cadastrarProduto()">Cadastrar</button>
+    <div>
+      <button class="form-control" (click)="alterarProduto()">Alterar</button>
+      <button class="form-control" (click)="deletarProduto()">Deletar</button>
+    </div>
+    <button class="form-control" (click)="limpar()">limpar</button>
+  </form>
+
+  <div class="produto" *ngFor="let produto of produtos ; let i = index">
+    <div class="produto-imagem-container">
+      <img class="produto-imagem" [src]="'assets/image/' + produto.nomeImagem" alt="Imagem do produto" />
+    </div>
+    <div class="produto-info">
+      <h3 class="produto-nome">{{ produto.nome }}</h3>
+      <p class="produto-descricao">{{ produto.descricao }}</p>
+      <h1 class="produto-preco">Preço: R$ {{ produto.preco }}</h1>
+      <button class="botao-comprar" (click)="selecionarProduto(i)">Comprar</button>
+    </div>
+  </div>
+
+</body>
