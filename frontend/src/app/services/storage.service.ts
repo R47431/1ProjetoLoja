@@ -44,7 +44,7 @@ export class StorageService {
   cargoGerente(): boolean {
     const valorArmazenado = this.get("posicao");
     if (valorArmazenado != null) {
-      const valorFormatado = valorArmazenado.replace(/"/g, '');
+      const valorFormatado = JSON.parse(valorArmazenado);
       if (valorFormatado === Cargo.GERENTE) {
         return true;
       } else if (valorFormatado === Cargo.CLIENTE) {

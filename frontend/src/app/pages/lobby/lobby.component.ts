@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Produto } from 'src/app/model/Produto';
+import { CarrinhoService } from 'src/app/services/carrinho.service';
 import { ProdutosService } from 'src/app/services/produtos.service';
 
 @Component({
@@ -13,7 +14,10 @@ export class LobbyComponent {
   pesquisa: string = '';
   produtoEncontrado: Produto | undefined;
 
-  constructor(private produtoService: ProdutosService) { }
+  constructor(
+    private produtoService: ProdutosService,
+    private carrinhoService: CarrinhoService
+  ) { }
 
   ngOnInit(): void {
     this.lista();
@@ -32,7 +36,15 @@ export class LobbyComponent {
       );
     });
   }
-  
+
+  adicionarAoCarrinho(produto: Produto): void {
+    const produtoParaCarrinho = {
+      nome: produto.nome,
+      preco: parseFloat(produto.preco)
+    };
+
+    this.carrinhoService.addProduto(produtoParaCarrinho);
+  }
 
   limpaFormulario(): void {
     this.produto = new Produto();

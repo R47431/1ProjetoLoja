@@ -36,7 +36,7 @@
   color: #e44d26;
 }
 
-.botao-comprar {
+.add-carrinho {
   width: 100px;
   display: block;
   margin-top: 10px;
@@ -50,7 +50,7 @@
   transition: background-color 0.3s ease;
 }
 
-.botao-comprar:hover {
+.add-carrinho:hover {
   background-color: #c5371b;
 }
 

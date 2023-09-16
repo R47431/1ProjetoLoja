@@ -3,10 +3,11 @@
     <input type="text" [(ngModel)]="pesquisa" name="pesquisa" placeholder="Pesquisa pelo nome" class="form-control" />
     <button type="submit" class="form-control">Buscar</button>
   </form>
-  
+
   <div *ngIf="produtoEncontrado" class="produtoEncontrado">
     <div class="produtoEncontrado-imagem-container">
-      <img [src]="'assets/image/' + produtoEncontrado.nomeImagem" alt="Imagem do produto" class="produtoEncontrado-imagem" />
+      <img [src]="'assets/image/' + produtoEncontrado.nomeImagem" alt="Imagem do produto"
+        class="produtoEncontrado-imagem" />
     </div>
     <div class="produtoEncontrado-detalhes">
       <h3 class="produtoEncontrado-nome">{{ produtoEncontrado.nome }}</h3>
@@ -14,7 +15,7 @@
       <p class="produtoEncontrado-descricao">Descrição: {{ produtoEncontrado.descricao }}</p>
     </div>
   </div>
-  
+
   <div class="produto" *ngFor="let produto of produtos">
     <div class="produto-imagem-container">
       <img class="produto-imagem" [src]="'assets/image/' + produto.nomeImagem" alt="Imagem do produto" />
@@ -23,7 +24,9 @@
       <h3 class="produto-nome">{{ produto.nome }}</h3>
       <p class="produto-descricao">{{ produto.descricao }}</p>
       <h1 class="produto-preco">Preço: R$ {{ produto.preco }}</h1>
-      <button class="botao-comprar">Comprar</button>
+      <button class="add-carrinho" (click)="adicionarAoCarrinho(produto)">
+        Add Carrinho
+      </button>
     </div>
   </div>
 </body>

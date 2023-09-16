@@ -10,7 +10,8 @@ import { StorageService } from 'src/app/services/storage.service';
   styleUrls: ['./perfil.component.css']
 })
 export class PerfilComponent implements OnInit {
-  cliente: Cliente | undefined // Inicialize com valores padrão ou vazios.
+  cliente = new Cliente();
+  clientes: Cliente[]=[];
 
   constructor(
     private clienteService: ClientesService,

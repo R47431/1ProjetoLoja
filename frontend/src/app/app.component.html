@@ -1,10 +1,15 @@
 <header class="header">
-    <a class="header-left" routerLink="lobby">Lobby</a>
-    <a class="header-left" routerLink="">Login</a>
-    <ng-container *ngIf="cargo()">
-        <a class="header-left" routerLink="cadastraCliente">Cadastrar Cliente</a>
-        <a class="header-left" routerLink="cadastraProduto">Cadastrar Produto</a>
-    </ng-container>
-    <a class="header-right" routerLink="perfil">Perfil</a>
+    <div class="header-left">
+        <a class="pontos" routerLink="lobby">Lobby</a>
+        <a class="pontos" routerLink="">Login</a>
+        <ng-container *ngIf="cargo()">
+            <a class="pontos" routerLink="cadastraCliente">Cadastrar Cliente</a>
+            <a class="pontos" routerLink="cadastraProduto">Cadastrar Produto</a>
+        </ng-container>
+    </div>
+    <div class="header-right"> <!-- Envolve os elementos "Perfil" e "Carrinho" em uma div -->
+        <a class="pontos" routerLink="perfil">Perfil</a>
+        <a class="pontos" routerLink="carrinho">Carrinho</a>
+    </div>
 </header>
-<router-outlet></router-outlet>   
+<router-outlet></router-outlet>

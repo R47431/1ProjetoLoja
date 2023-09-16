@@ -27,10 +27,9 @@ export class LoginComponent {
   login(): void {
     this.clienteSevice.loginCliente(this.cliente).subscribe({
       next: (data) => {
-        if (data) { // Verifique se a resposta inclui um ID
-          console.log(data);
+        if (data) {
           this.router.navigate(['/lobby']);
-          this.storage.set('id',JSON.stringify(data.id));
+          this.storage.set('id', JSON.stringify(data.id));
           this.storage.set('posicao', JSON.stringify(data.cargo));
         } else {
           console.error('Resposta do servidor não contém ID de usuário');

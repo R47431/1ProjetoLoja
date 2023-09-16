@@ -10,6 +10,7 @@ import { LobbyComponent } from './pages/lobby/lobby.component';
 import { CadastraClienteComponent } from './pages/cadastra-cliente/cadastra-cliente.component';
 import { CadastraProdutoComponent } from './pages/cadastra-produto/cadastra-produto.component';
 import { PerfilComponent } from './pages/perfil/perfil.component';
+import { CarrinhoComponent } from './pages/carrinho/carrinho.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { PerfilComponent } from './pages/perfil/perfil.component';
     CadastraClienteComponent,
     CadastraProdutoComponent,
     PerfilComponent,
+    CarrinhoComponent,
     
   ],
   imports: [

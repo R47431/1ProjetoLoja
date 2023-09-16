@@ -5,6 +5,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { CadastraClienteComponent } from './pages/cadastra-cliente/cadastra-cliente.component';
 import { CadastraProdutoComponent } from './pages/cadastra-produto/cadastra-produto.component';
 import { PerfilComponent } from './pages/perfil/perfil.component';
+import { CarrinhoComponent } from './pages/carrinho/carrinho.component';
 
 const routes: Routes = [
   { path: 'lobby', component: LobbyComponent },
@@ -12,6 +13,8 @@ const routes: Routes = [
   { path: 'cadastraCliente', component: CadastraClienteComponent },
   { path: 'cadastraProduto', component: CadastraProdutoComponent},
   { path: 'perfil', component: PerfilComponent},
+  { path: 'carrinho', component: CarrinhoComponent},
+
 
 ];
 
