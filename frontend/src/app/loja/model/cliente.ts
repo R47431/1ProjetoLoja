@@ -1,4 +1,4 @@
-import Cargo from "./Cargo";
+import { Cargo } from "./cargo";
 
 export class Cliente {
 

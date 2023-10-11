@@ -1,13 +1,11 @@
 import { Injectable } from '@angular/core';
-import Cargo from '../model/Cargo';
-import { Cliente } from '../model/Cliente';
+import { Cargo } from '../model/cargo';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class StorageService {
-  cliente = new Cliente();
-
   private stotage: Storage;
 
   constructor() {

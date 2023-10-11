@@ -5,7 +5,7 @@
             <input type="text" placeholder="Nome" [(ngModel)]="cliente.nome" name="nome" class="input">
             <input type="password" placeholder="senha" [(ngModel)]="cliente.senha" name="senha" class="input">
         </div>
-        <a href="/cadastraCliente">cadastra</a>
+        <a [routerLink]="['cadastraCliente']">cadastra</a>
         <button (click)="login()" class="form-control">Login</button>
     </div>
 </body>

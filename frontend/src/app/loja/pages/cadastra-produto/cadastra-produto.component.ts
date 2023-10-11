@@ -1,9 +1,7 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { Produto } from 'src/app/model/Produto';
-import { ProdutosService } from 'src/app/services/produtos.service';
-import { Cliente } from '../../model/Cliente';
-import { StorageService } from 'src/app/services/storage.service';
-import Cargo from '../../model/Cargo';
+import { Cliente } from 'src/app/loja/model/cliente';
+import { Produto } from 'src/app/loja/model/produto';
+import { ProdutosService } from '../../services/produtos.service';
 
 @Component({
   selector: 'app-cadastra-produto',
@@ -27,7 +25,6 @@ export class CadastraProdutoComponent {
 
   constructor(
     private produtosServise: ProdutosService,
-    private storageService: StorageService,
   ) { }
 
   ngOnInit(): void {

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Produto } from '../model/Produto';
+import { Produto } from '../model/produto';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +23,10 @@ export class ProdutosService {
     formData.append('preco', produto.preco.toString());
     formData.append('descricao', produto.descricao);
   
-    return this.http.post<Produto>(`${this.url}`, formData);
+    return this.http.post<Produto>(`${this.url}`, formData).pipe(
+      res=>res,
+      error => error
+    );
   }
 
   alteraProduto(produto: Produto, imagem: File): Observable<Produto> {
@@ -33,14 +36,23 @@ export class ProdutosService {
     formData.append('produtoId', produto.produtoId.toString());
     formData.append('preco', produto.preco.toString());
     formData.append('descricao', produto.descricao);
-    return this.http.put<Produto>(`${this.url}` ,formData);  
+    return this.http.put<Produto>(`${this.url}` ,formData).pipe(
+      res=>res,
+      error => error
+    );  
   }
 
   deletaProduto(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.url}/${id}`)
+    return this.http.delete<void>(`${this.url}/${id}`).pipe(
+      res=>res,
+      error => error
+    );
   }
 
   buscaProduto(nome: string): Observable<Produto> {
-    return this.http.get<Produto>(`${this.url}/${nome}`)
+    return this.http.get<Produto>(`${this.url}/${nome}`).pipe(
+      res=>res,
+      error => error
+    );
   }
 }

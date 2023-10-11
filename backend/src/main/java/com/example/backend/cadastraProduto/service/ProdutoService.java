@@ -26,7 +26,7 @@ public class ProdutoService {
 
     String aa = System.getProperty("user.home");
 
-    String diretorio = aa +"/Documentos/1ProjetoLoja-main/frontend/src/assets/image";
+    String diretorio = aa +"/Documentos/PROJETOS/1ProjetoLoja/frontend/src/assets/image";
 
     public HashMap<String, String> diretorios(ProdutoModelo produtoModelo) {
         HashMap<String, String> diretorios = new HashMap<>();

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { Cliente } from 'src/app/model/Cliente';
-import { ClientesService } from 'src/app/services/clientes.service';
-import { StorageService } from 'src/app/services/storage.service';
+import { Router } from '@angular/router';
+import { Cliente } from 'src/app/loja/model/cliente';
+import { ClientesService } from '../../services/clientes.service';
 
 @Component({
   selector: 'app-cadastra-cliente',
@@ -10,6 +10,7 @@ import { StorageService } from 'src/app/services/storage.service';
 })
 export class CadastraClienteComponent {
   cliente = new Cliente();
+
   clientes: Cliente[] = [];
 
   campoInvalido = {
@@ -21,7 +22,7 @@ export class CadastraClienteComponent {
 
   constructor(
     private clienteService: ClientesService,
-    private storage: StorageService
+    private router: Router
 
   ) { }
 
@@ -46,8 +47,8 @@ export class CadastraClienteComponent {
 
         if (senha === "") {
           alert('Por favor, preencha o campo de senha.');
-        } else if (!/^[0-9]+$/.test(senha)) {
-          alert('A senha não pode ser alfabética.zz');
+        } else if (!/^\d+$/.test(senha)) {
+          alert('A senha não pode ser alfabética.');
         } else if (error.status === 400) {
           alert('Nome de usuário já está em uso');
         } else {
@@ -55,7 +56,7 @@ export class CadastraClienteComponent {
         }
       },
       complete: () => {
-        window.location.href = 'login';
+        this.router.navigate(['/login']);
       }
     });
   }

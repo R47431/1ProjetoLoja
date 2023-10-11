@@ -46,12 +46,11 @@ public class ControllerCliente {
     }
 
     @PostMapping
-    public ResponseEntity<?> cadastrar( ClienteModelo cliente) {
+    public ResponseEntity<?> cadastrar(@RequestBody ClienteModelo cliente) {
         try {
             cadastroService.validarNomeIdadeTelefone(cliente);
             cadastroService.nomeExistente(cliente);
             cliente.setLogado(true);
-            cliente.setCargo(Cargo.CLIENTE);
 
             ClienteModelo retonarCliente = cadastraRepositorio.save(cliente);
             return ResponseEntity.ok(retonarCliente);

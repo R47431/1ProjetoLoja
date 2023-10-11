@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { Produto } from 'src/app/model/Produto';
-import { CarrinhoService } from 'src/app/services/carrinho.service';
-import { ProdutosService } from 'src/app/services/produtos.service';
+import { Produto } from 'src/app/loja/model/produto';
+import { ProdutosService } from '../../services/produtos.service';
+import { CarrinhoService } from '../../services/carrinho.service';
 
 @Component({
   selector: 'app-lobby',

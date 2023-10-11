@@ -1,10 +1,7 @@
 import { Component } from '@angular/core';
-import { Produto } from './model/Produto';
-import { ProdutosService } from './services/produtos.service';
-import { StorageService } from './services/storage.service';
-import { Cliente } from 'src/app/model/Cliente';
-import Cargo from './model/Cargo';
-import cargo from 'src/app/model/Cargo';
+import { Cliente } from './loja/model/cliente';
+import { StorageService } from './loja/services/storage.service';
+
 
 @Component({
   selector: 'app-root',
@@ -12,11 +9,10 @@ import cargo from 'src/app/model/Cargo';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'frontend';
   cliente = new Cliente();
 
   constructor(
-    private storageService: StorageService
+    private storageService: StorageService,
   ) { }
 
   cargo(): boolean {

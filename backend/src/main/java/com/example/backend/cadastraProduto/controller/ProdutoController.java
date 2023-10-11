@@ -42,7 +42,7 @@ public class ProdutoController {
     }
 
     @PostMapping
-    public ResponseEntity<?> cadastra(ProdutoModelo produtoModelo, @RequestParam("imagem") MultipartFile imagem) {
+    public ResponseEntity<?> cadastra( ProdutoModelo produtoModelo, @RequestParam("imagem") MultipartFile imagem) {
         try {
             produtoService.validaCampo(produtoModelo, imagem);
 

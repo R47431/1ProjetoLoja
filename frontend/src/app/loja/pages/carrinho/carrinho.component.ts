@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Produto } from 'src/app/model/Produto';
-import { LobbyComponent } from '../lobby/lobby.component';
-import { CarrinhoService } from 'src/app/services/carrinho.service';
+import { Produto } from 'src/app/loja/model/produto';
+import { CarrinhoService } from '../../services/carrinho.service';
 
 @Component({
   selector: 'app-carrinho',
