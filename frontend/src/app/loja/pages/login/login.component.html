@@ -1,3 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
 <body>
     <div class="card">
         <h2>Login</h2>
@@ -5,8 +14,9 @@
             <input type="text" placeholder="Nome" [(ngModel)]="cliente.nome" name="nome" class="input">
             <input type="password" placeholder="senha" [(ngModel)]="cliente.senha" name="senha" class="input">
         </div>
-        <a [routerLink]="['cadastraCliente']">cadastra</a>
+        <a [routerLink]="['/cadastraCliente']">cadastra</a>
         <button (click)="login()" class="form-control">Login</button>
     </div>
 </body>
 
+</html>

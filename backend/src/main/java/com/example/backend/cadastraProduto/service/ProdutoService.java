@@ -22,8 +22,7 @@ public class ProdutoService {
     @Autowired
     private ProdutoRepositorio produtoRepositorio;
 
-    private ClienteRepositorio clienteRepositorio;
-
+    //TODO fazer o getProperty ("user.")
     String aa = System.getProperty("user.home");
 
     String diretorio = aa +"/Documentos/PROJETOS/1ProjetoLoja/frontend/src/assets/image";

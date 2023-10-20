@@ -1,12 +1,25 @@
-<div *ngIf="cliente" class="card">
-  <h1>Perfil do Cliente</h1>
-  <p>Nome: {{ cliente.nome }}</p>
-  <p>Idade: {{ cliente.idade }}</p>
-  <p>telefone: {{cliente.telefone}}
-    <button></button>
-  </p>
-  <p>redefina senha
-    <br><button>testeAteraSenha</button>
-  </p>
-  <p *ngIf="cargo()">cargo: {{cliente.cargo}}</p>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div *ngIf="cliente" class="card">
+    <h1>Perfil do Cliente</h1>
+    <p>Nome: {{ cliente.nome }}</p>
+    <p>Idade: {{ cliente.idade }}</p>
+    <p>telefone: {{cliente.telefone}}
+      <button></button>
+    </p>
+    <p>redefina senha
+      <br><button>testeAteraSenha</button>
+    </p>
+    <p *ngIf="cargo()">cargo: {{cliente.cargo}}</p>
+  </div>
+</body>
+
+</html>
