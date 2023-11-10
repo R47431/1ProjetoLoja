@@ -1,16 +1,13 @@
-<header class="header">
-    <div class="header-left">
-        <a class="pontos" [routerLink]="['lobby']">Lobby</a>
-        <a class="pontos" [routerLink]="['login']">Login</a>
+<header class="header navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand" [routerLink]="['lobby']">Lobby</a>
+        <a class="navbar-brand" [routerLink]="['login']">Login</a>
         <ng-container *ngIf="cargo()">
-            <a class="pontos" [routerLink]="['cadastrar/cadastraCliente']">Cadastrar Cliente</a>
-            <a class="pontos" [routerLink]="['cadastrar/cadastraProduto']">Cadastrar Produto</a>
+            <a class="navbar-brand" [routerLink]="['cadastrar/cadastraCliente']">Cadastrar Cliente</a>
+            <a class="navbar-brand" [routerLink]="['cadastrar/cadastraProduto']">Cadastrar Produto</a>
         </ng-container>
-    </div>
-    <div class="header-right"> 
-        <a class="pontos" [routerLink]="['perfil']">Perfil</a>
-        <a class="pontos" [routerLink]="['carrinho']">Carrinho</a>
+        <a class="navbar-brand" [routerLink]="['perfil']">Perfil</a>
+        <a class="navbar-brand" [routerLink]="['carrinho']">Carrinho</a>
     </div>
 </header>
-
 <router-outlet></router-outlet>

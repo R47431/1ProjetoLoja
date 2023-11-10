@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="container">
+    <form [formGroup]="formulario" style="max-width: 400px; margin: 0 auto;">
+      <h1 class="card-title mt-4">Cadastro</h1>
+      <div class="card-body">
+        <div class="mb-3">
+          <label for="nome" class="form-label">Nome:</label>
+          <input class="form-control" type="text"  id="nome" placeholder="Digite seu nome" formControlName="nome"
+            [ngClass]="{'campo-invalido': isCampoInvalido('nome')}">
+          <span *ngIf="isCampoInvalido('nome')">
+            Por favor, preencha o campo nome.</span>
+        </div>
+
+        <div class="mb-3">
+          <label for="idade" class="form-label">Idade:</label>
+          <input class="form-control" type="number"  id="idade" placeholder="Digite sua idade" formControlName="idade"
+            [ngClass]="{'campo-invalido': isCampoNumerico('idade')}"/>
+          <div *ngIf="isCampoNumerico('idade')">
+            Por favor, preencha o campo idade com número.</div>
+        </div>
+
+        <div class="mb-3">
+          <label for="telefone" class="form-label">Telefone:</label>
+          <input class="form-control" type="number"  id="telefone" placeholder="Digite seu telefone" formControlName="telefone" 
+            [ngClass]="{'campo-invalido': isCampoNumerico('telefone')}"/>
+          <span *ngIf="isCampoNumerico('telefone')">
+            Por favor, preencha o campo telefone com 9 dígitos.</span>
+
+        </div>
+        <div class="mb-3">
+          <label for="senha" class="form-label">Senha:</label>
+          <input class="form-control" type="password"  id="senha" placeholder="Digite sua senha" formControlName="senha"
+          [ngClass]="{'campo-invalido': isCampoNumerico('senha')}"/>
+          <span *ngIf="isCampoNumerico('senha')">
+            Por favor, preencha o campo senha.</span>
+        </div>
+
+        <button type="button" (click)="cadastrarCliente()" class="btn btn-primary btn-block">Cadastrar</button>
+        <button type="button" (click)="limpar()" class="btn btn-secondary btn-block">Limpar</button>
+      </div>
+    </form>
+  </div>
+</body>
+
+
+
+</html>

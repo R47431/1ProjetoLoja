@@ -1,27 +1,39 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { Cliente } from 'src/app/loja/model/cliente';
-import { ClientesService } from '../../services/clientes.service';
-import { StorageService } from '../../services/storage.service';
+import { Cliente } from 'src/app/model/cliente';
+import { ClientesService } from 'src/app/services/clientes.service';
+import { StorageService } from 'src/app/services/storage.service';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { ValidacoesService } from '../../services/validacoes.service';
+
 
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
+  styleUrls:['../../../styles.css']
 })
 export class LoginComponent {
   cliente = new Cliente();
   clientes: Cliente[] = [];
+  formulario:FormGroup = new FormGroup({});
 
   constructor(
     private clienteSevice: ClientesService,
     private storage: StorageService,
-    private router: Router
+    private router: Router,
+    private formBuilder: FormBuilder,
+    private validacoesService:ValidacoesService,
   ) { }
 
   ngOnInit(): void {
+    this.formulario = this.formBuilder.group({
+      nome: ['', Validators.required],
+      senha: ['', Validators.required]
+    })
+
   }
+  
 
   login(): void {
     this.clienteSevice.loginCliente(this.cliente).subscribe({
@@ -44,5 +56,15 @@ export class LoginComponent {
         }
       },
     });
+  }
+
+
+  isCampoInvalido(campo: string): boolean {
+    const campoFormControl = this.formulario.get(campo) as FormControl;
+    return this.validacoesService.isCampoInvalido(campoFormControl);
+  }
+  isCampoNumerico(campo: string): boolean {
+    const campoFormControl = this.formulario.get(campo) as FormControl;
+    return this.validacoesService.isCampoNumerico(campoFormControl);
   }
 }

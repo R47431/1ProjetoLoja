@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
-import { Produto } from 'src/app/loja/model/produto';
-import { ProdutosService } from '../../services/produtos.service';
-import { CarrinhoService } from '../../services/carrinho.service';
+import { Produto } from 'src/app/model/produto';
+import { CarrinhoService } from 'src/app/services/carrinho.service';
+import { ProdutosService } from 'src/app/services/produtos.service';
+
 
 @Component({
   selector: 'app-lobby',
   templateUrl: './lobby.component.html',
-  styleUrls: ['./lobby.component.css']
+  styleUrls:['../../../styles.css']
 })
 export class LobbyComponent {
   produto = new Produto();

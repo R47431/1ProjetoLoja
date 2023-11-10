@@ -1,35 +1,42 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { Cliente } from 'src/app/loja/model/cliente';
-import { Produto } from 'src/app/loja/model/produto';
+import { Cliente } from 'src/app/model/cliente';
+import { Produto } from 'src/app/model/produto';
 import { ProdutosService } from '../../services/produtos.service';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ValidacoesService } from 'src/app/services/validacoes.service';
 
 @Component({
   selector: 'app-cadastra-produto',
   templateUrl: './cadastra-produto.component.html',
-  styleUrls: ['./cadastra-produto.component.css']
+  styleUrls:['../../../styles.css']
 })
 
 export class CadastraProdutoComponent {
-  cliente = new Cliente();
   produto = new Produto();
   produtos: Produto[] = [];
+  formulario: FormGroup = new FormGroup({});
   arquivoImagem: File | null = null;
   @ViewChild('fileInput', { static: false }) fileInput!: ElementRef;
+  imagemPrevisualizada: string | null = null;
 
-  campoInvalido = {
-    nome: false,
-    preco: false,
-    descricao: false,
-    imagem: false,
-  };
 
   constructor(
     private produtosServise: ProdutosService,
+    private validacoesService: ValidacoesService,
+    private formBuilder: FormBuilder,
   ) { }
 
   ngOnInit(): void {
+    this.formulario = this.formBuilder.group({
+      nomeImagem: ['', Validators.required],
+      nome: ['', Validators.required],
+      preco: ['', Validators.required],
+      descricao: ['', Validators.required],
+    });
     this.listaProduto();
   }
+
+
 
   listaProduto(): void {
     this.produtosServise.listaProduto()
@@ -74,18 +81,13 @@ export class CadastraProdutoComponent {
 
   selecionarArquivo(event: any): void {
     const arquivoSelecionado = event.target.files[0];
-    this.arquivoImagem = arquivoSelecionado;
-    this.produto.nomeImagem = arquivoSelecionado.name;
-  }
-
-  validarCampo(campo: string): void {
-    if (campo === 'nome') {
-      this.campoInvalido.nome = this.produto.nome === '';
-    } else if (campo === 'preco') {
-      const preco = Number(this.produto.preco);
-      this.campoInvalido.preco = this.produto.preco === null || isNaN(preco) || preco <= 0;
-    } else if (campo === 'descricao') {
-      this.campoInvalido.descricao = this.produto.descricao === '';
+    if (arquivoSelecionado) {
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        this.imagemPrevisualizada = e.target.result;
+      };
+      reader.readAsDataURL(arquivoSelecionado);
+      this.arquivoImagem = arquivoSelecionado;
     }
   }
 
@@ -94,9 +96,19 @@ export class CadastraProdutoComponent {
   }
 
   limpar(): void {
-    this.produto = new Produto();
+    this.formulario.reset();
     if (this.fileInput) {
       this.fileInput.nativeElement.value = '';
     }
+  }
+
+  isCampoInvalido(campo: string): boolean {
+    const campoFormControl = this.formulario.get(campo) as FormControl;
+    return this.validacoesService.isCampoInvalido(campoFormControl);
+  }
+
+  isCampoNumerico(campo: string): boolean {
+    const campoFormControl = this.formulario.get(campo) as FormControl;
+    return this.validacoesService.isCampoNumerico(campoFormControl);
   }
 }

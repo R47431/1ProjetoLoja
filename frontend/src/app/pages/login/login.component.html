@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="card mt-5" style="max-width: 400px;margin: 0 auto;">
+      <div class="card-body">
+        <h2 class="card-title">Login</h2>
+        <form [formGroup]="formulario">
+          <div class="mb-3">
+            <label for="nome" class="form-label">Nome:</label>
+            <input type="text" class="form-control" id="nome" placeholder="Digite seu nome" formControlName="nome"
+              name="nome" [ngClass]="{'campo-invalido': isCampoInvalido('nome')}">
+            <span *ngIf="isCampoInvalido('nome')">
+              Por favor, preencha o campo nome.</span>
+          </div>
+          <div class="mb-3">
+            <label for="senha" class="form-label">Senha:</label>
+            <input type="password" class="form-control" id="senha" placeholder="Digite seu senha"
+              formControlName="senha" name="senha" [ngClass]="{'campo-invalido': isCampoNumerico('senha')}">
+            <span *ngIf="isCampoNumerico('senha')">
+              Por favor, preencha o campo senha.</span>
+          </div>
+          <button type="button" (click)="login()" class="btn btn-primary btn-block">Login</button>
+        </form>
+        <p class="mt-3">Não possui uma conta? <a [routerLink]="['/cadastraCliente']">Cadastre-se</a></p>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="container mt-4">
+    <div class="row">
+      <div class="col-md-6">
+        <form [formGroup]="formulario">
+          <div class="form-group mb-3">
+            <input #fileInput type="file" name="nomeImagem" (change)="selecionarArquivo($event)"
+              formControlName="nomeImagem" [ngClass]="{'campo-invalido': isCampoInvalido('nomeImagem')}" />
+            <span *ngIf="isCampoInvalido('nomeImagem')">
+              Por favor, preencha o campo imagem.</span>
+          </div>
+
+          <div class="form-group mb-3">
+            <input type="text" name="nome" placeholder="Nome" class="form-control" formControlName="nome"
+              [ngClass]="{'campo-invalido': isCampoInvalido('nome')}" />
+            <span *ngIf="isCampoInvalido('nome')">
+              Por favor, preencha o campo nome.</span>
+          </div>
+
+          <div class="form-group mb-3">
+            <input type="number" name="preco" placeholder="Preço" class="form-control" formControlName="preco"
+              formControlName="preco" [ngClass]="{'campo-invalido': isCampoInvalido('preco')}" />
+            <span *ngIf="isCampoInvalido('preco')">
+              Por favor, preencha o campo preco.</span>
+          </div>
+
+          <div class="form-group mb-3">
+            <input class="form-control" type="text" name="descricao" placeholder="Descrição" formControlName="descricao"
+              [ngClass]="{'campo-invalido': isCampoInvalido('descricao')}" />
+            <span *ngIf="isCampoInvalido('descricao')">
+              Por favor, preencha o campo descricao.</span>
+          </div>
+
+          <button class="btn btn-primary" (click)="cadastrarProduto()">Cadastrar</button>
+          <button class="btn btn-success" (click)="alterarProduto()">Alterar</button>
+          <button class="btn btn-danger" (click)="deletarProduto()">Deletar</button>
+          <button class="btn btn-secondary" (click)="limpar()">Limpar</button>
+
+        </form>
+      </div>
+
+      <div class="col-md-6 mt-4">
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+          <div class="col">
+            <div class="card">
+              <img src="{{ imagemPrevisualizada }}" class="card-img-top img-fluid" alt="Imagem do produto" style="width: 300px; height: 300px; object-fit: contain;">
+              <div class="card-body">
+                <h5 class="card-title">{{ produto.nome }}</h5>
+                <p class="card-text">{{ produto.descricao }}</p>
+                <p class="card-text">Preço: R$ {{ produto.preco }}</p>
+                <button class="btn btn-success">Comprar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

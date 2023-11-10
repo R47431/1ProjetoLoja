@@ -6,12 +6,12 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () =>
-      import('./loja/loja.module').then((m) => m.LojaModule),
+      import('./loja.module').then((m) => m.LojaModule),
   },
   {
     path: 'cadastrar',
     loadChildren: () =>
-      import('./loja/loja.module').then((m) => m.LojaModule),
+      import('./loja.module').then((m) => m.LojaModule),
   },
 ];
 

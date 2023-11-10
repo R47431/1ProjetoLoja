@@ -1,8 +1,6 @@
 package com.example.backend.cadastraProduto.service;
 
-import com.example.backend.cadastraCliente.model.Cargo;
-import com.example.backend.cadastraCliente.model.ClienteModelo;
-import com.example.backend.cadastraCliente.repositorioCliente.ClienteRepositorio;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
@@ -22,11 +20,10 @@ public class ProdutoService {
     @Autowired
     private ProdutoRepositorio produtoRepositorio;
 
-    //TODO fazer o getProperty ("user.")
-    String aa = System.getProperty("user.home");
-
-    String diretorio = aa +"/Documentos/PROJETOS/1ProjetoLoja/frontend/src/assets/image";
-
+    //TODO mude se estive com erro de nao acha cadastra e deleta
+    String diretorioPardrao = System.getProperty("user.dir");
+    String diretorio = diretorioPardrao+"/src/main/resources/static/assets/image";
+    
     public HashMap<String, String> diretorios(ProdutoModelo produtoModelo) {
         HashMap<String, String> diretorios = new HashMap<>();
 

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Cliente } from './loja/model/cliente';
-import { StorageService } from './loja/services/storage.service';
+import { Cliente } from './model/cliente';
+import { StorageService } from './services/storage.service';
 
 
 @Component({

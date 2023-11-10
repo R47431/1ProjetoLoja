@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Produto } from 'src/app/loja/model/produto';
-import { CarrinhoService } from '../../services/carrinho.service';
+import { Produto } from 'src/app/model/produto';
+import { CarrinhoService } from 'src/app/services/carrinho.service';
 
 @Component({
   selector: 'app-carrinho',
   templateUrl: './carrinho.component.html',
-  styleUrls: ['./carrinho.component.css']
+  styleUrls:['../../../styles.css']
 })
 export class CarrinhoComponent implements OnInit {
   produtos: Produto[] = [];
