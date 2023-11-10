@@ -10,6 +10,8 @@ import com.example.backend.cadastraProduto.model.ProdutoModelo;
 import com.example.backend.cadastraProduto.repositorio.ProdutoRepositorio;
 
 import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Optional;
 
@@ -21,9 +23,10 @@ public class ProdutoService {
     private ProdutoRepositorio produtoRepositorio;
 
     //TODO mude se estive com erro de nao acha cadastra e deleta
-    String diretorioPardrao = System.getProperty("user.dir");
-    String diretorio = diretorioPardrao+"/src/main/resources/static/assets/image";
-    
+    Path currentPath = Paths.get(System.getProperty("user.dir"));
+    Path desiredPath = currentPath.getParent();
+
+    String diretorio = desiredPath.toString() + "/frontend/src/assets/image";
     public HashMap<String, String> diretorios(ProdutoModelo produtoModelo) {
         HashMap<String, String> diretorios = new HashMap<>();
 
